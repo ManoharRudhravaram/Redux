@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 async function FetchHandler(dispatch, value) {
     console.log(value);
     let { first } = value;
@@ -15,14 +16,26 @@ async function FetchHandler(dispatch, value) {
     }
 }
 
+async function singleFetch(dispatch,id) {
+    let url = `https://dummyjson.com/products/${id}`
+    try {
+        let res = await axios.get(url)
+        let data = await res.data;
+        dispatch({ type: 'single', payload: data })
+    }
+    catch (err) {
+        console.log('err fetching data', err);
+    }
+}
+
 function searchHandler(e, x) {
     let { value } = e.target;
     return { type: 'searching', payload: { value, x } }
 }
 
-function CatHandler(e,x){
+function CatHandler(e, x) {
     let { value } = e.target;
-    return {type:'filter',payload:{value,x}}
+    return { type: 'filter', payload: { value, x } }
 }
 
 function sortHandler(e, x) {
@@ -30,8 +43,8 @@ function sortHandler(e, x) {
     return { type: 'sorting', payload: { value, x } }
 }
 
-function filterHandler(e,x){
-    let {value}=e.target;
-    return {type:'category',payload:{value,x}}
+function filterHandler(e, x) {
+    let { value } = e.target;
+    return { type: 'category', payload: { value, x } }
 }
-export { FetchHandler, searchHandler, sortHandler ,CatHandler, filterHandler};
+export { FetchHandler, searchHandler, sortHandler, CatHandler, filterHandler, singleFetch };

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { FetchHandler } from '../Redux/Action';
+import { FetchHandler, singleFetch } from '../Redux/Action';
 
 function Pagination() {
+    
     let [value, setValue] = useState({ first: 0 })
 
     let dispatch = useDispatch()

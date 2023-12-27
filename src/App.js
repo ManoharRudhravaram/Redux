@@ -1,10 +1,15 @@
 import React from 'react'
 import Home from './Pages/Home'
+import Single from './Pages/Single'
+import { Route,Routes } from 'react-router-dom'
 
 function App() {
   return (
     <>
-        <Home />
+    <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/single/:id' element={<Single/>}/>
+    </Routes>
     </>
   )
 }
