@@ -1,12 +1,14 @@
-const initial = { cartData: [], total: 0 }
+import { getData } from '../Action/index';
+
+const initial = { cartData: getData(), total: 0 }
 function cartReducer(state = initial, action) {
   switch (action.type) {
     case 'total':
-      let totalPrice=state.cartData.reduce((acc,item)=>{
-        return acc+item.count*item.price;
-      },0)
+      let totalPrice = state.cartData.reduce((acc, item) => {
+        return acc + item.count * item.price;
+      }, 0)
 
-      return {...state,total:totalPrice}
+      return { ...state, total: totalPrice }
     case 'addToCart':
       let { count, singleData: { thumbnail, price, title, id, stock } } = action.payload;
       let sameProd = state.cartData.find((item) => {
@@ -33,7 +35,7 @@ function cartReducer(state = initial, action) {
         }
         return { ...state, cartData: [...state.cartData, obj] }
       }
-      
+
     default:
       return state;
   }

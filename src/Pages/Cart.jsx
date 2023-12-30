@@ -3,19 +3,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 function Cart() {
-  let dispatch=useDispatch();
+  let dispatch = useDispatch();
 
   let cart = useSelector((data) => {
     return data.cartReducer.cartData;
   })
-  
-    let Total = useSelector((data) => {
-      return data.cartReducer.total;
-    })
-  
-    useEffect(()=>{
-      dispatch({type:'total'})
-    },cart) 
+
+  let Total = useSelector((data) => {
+    return data.cartReducer.total;
+  })
+
+  useEffect(() => {
+    dispatch({ type: 'total' })
+    localStorage.setItem('cart',JSON.stringify(cart))
+  }, [cart])
+  cart.forEach(element => {
+    console.log(element);
+  });
   return (
     <>
       {cart.length == 0 && <div className="container">
@@ -37,7 +41,7 @@ function Cart() {
           <hr />
         </div>
         {cart.length > 0 &&
-          cart.map((item,i) => {
+          cart.map((item, i) => {
             return (
               <div className="row d-flex justify-content-evenly border" key={i}>
                 <div className="col-md-2">
@@ -52,7 +56,7 @@ function Cart() {
                 </div>
                 <div className="col-md-2">${item.price}</div>
                 <div className="col-md-2">{item.count}</div>
-                <div className="col-md-2">${item.price*item.count}</div>
+                <div className="col-md-2">${item.price * item.count}</div>
                 <hr />
               </div>
             );

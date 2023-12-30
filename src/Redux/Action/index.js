@@ -50,4 +50,8 @@ function addToCart(singleData, count) {
     return { type: 'addToCart', payload: { singleData, count } }
 }
 
-export { FetchHandler, searchHandler, sortHandler, CatHandler, filterHandler, singleFetch, addToCart };
+function getData(){
+    return JSON.parse(localStorage.getItem('cart')
+   )}
+
+export { FetchHandler, searchHandler, sortHandler, CatHandler, filterHandler, singleFetch, addToCart , getData};
