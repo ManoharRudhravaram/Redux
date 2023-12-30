@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
 function Gallary({ images }) {
-
-    let [url, setUrl] = useState(images ? images[0] : 'https://www.shutterstock.com/shutterstock/videos/1089338605/thumb/4.jpg?ip=x480')
+    let [url, setUrl] = useState(images ? images[0] : null)
     
     function imageHandler(data) {
         setUrl(data)
@@ -28,7 +27,7 @@ function Gallary({ images }) {
                             <img
                                 src={url}
                                 alt='x'
-                                className="img-fluid"
+                                className="img-fluid" 
                             />
                         </div>
                     </div>

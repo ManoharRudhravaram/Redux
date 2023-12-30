@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { FetchHandler, singleFetch } from '../Redux/Action';
+import { FetchHandler} from '../Redux/Action';
 
 function Pagination() {
     
@@ -44,6 +44,7 @@ function Pagination() {
         let objValue = { ...value, first: val }
         setValue(objValue)
     }
+    
     return (
         <div>
             {array.length > 0 &&

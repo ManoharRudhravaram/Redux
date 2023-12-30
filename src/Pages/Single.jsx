@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Gallary from './Gallary';
 import { singleFetch } from '../Redux/Action';
 import { Link, useParams } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
+import CartIncDec from './CartIncDec';
 
 function Single() {
   let { id } = useParams();
@@ -12,9 +13,10 @@ function Single() {
     return data.fetchReducer.single;
   })
 
-  let { images, title, description, rating, price, stock, brand, discountPercentage} = data;
+  let { images, title, description, rating, price, stock, brand, discountPercentage } = data;
 
   let dispatch = useDispatch();
+  
   useEffect(() => {
     singleFetch(dispatch, id)
   }, [])
@@ -24,14 +26,14 @@ function Single() {
       <div className="container">
         <div className="row  d-flex justify-content-evenly">
           <div className="col-md-5 mt-1">
-            <Gallary images={images}  />
+            <Gallary images={images} />
           </div>
           <div className="col-md-5">
-            <h1 style={{fontFamily:'fantasy'}}>{title}</h1>
-            <p><FaStar/>{rating}</p>
+            <h1 style={{ fontFamily: 'fantasy' }}>{title}</h1>
+            <p><FaStar />{rating}</p>
             <p>MRP:${price}</p>
             <p className="text-primary">deal of the day:${price - ((price * discountPercentage) / 100)}</p>
-            <p className="m-2" style={{fontFamily:'initial'}}>
+            <p className="m-2" style={{ fontFamily: 'initial' }}>
               {description}
             </p>
             <div style={{ width: "100%" }}>
@@ -39,11 +41,10 @@ function Single() {
             </div>
             <hr />
             <p>Available: <b> {stock > 0 ? "In Stock" : "Out of Stock"}</b></p>
+            <p>Stock: <b>{stock} units</b></p>
             <p>Brand:<b>{brand}</b></p>
             <hr />
-            <Link to='/'>
-              <button className='btn btn-primary'>Continue Shopping</button>
-            </Link>
+            <CartIncDec/>
           </div>
         </div>
       </div>

@@ -16,8 +16,8 @@ function Dispaly() {
                 {
                     array.length === 0 ? <ColorRing
                         visible={true}
-                        height="8"
-                        width="8"
+                        height="100"
+                        width="100"
                         ariaLabel="color-ring-loading"
                         wrapperStyle={{}}
                         wrapperClass="color-ring-wrapper"
