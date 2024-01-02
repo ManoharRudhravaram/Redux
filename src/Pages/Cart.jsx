@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
+import { CiCircleRemove } from "react-icons/ci";
+import { removeHandler } from '../Redux/Action';
 
 function Cart() {
   let dispatch = useDispatch();
@@ -14,12 +16,10 @@ function Cart() {
   })
 
   useEffect(() => {
-    dispatch({ type: 'total' })
+    dispatch({ type: 'totalPrice' })
     localStorage.setItem('cart',JSON.stringify(cart))
   }, [cart])
-  cart.forEach(element => {
-    console.log(element);
-  });
+
   return (
     <>
       {cart.length == 0 && <div className="container">
@@ -38,6 +38,7 @@ function Cart() {
           <div className="col-md-2">PRICE</div>
           <div className="col-md-2">QUANTITY</div>
           <div className="col-md-2">Total</div>
+          <div className="col-md-2">Remove</div>
           <hr />
         </div>
         {cart.length > 0 &&
@@ -49,7 +50,7 @@ function Cart() {
                     <img
                       src={item.thumbnail}
                       alt={Math.random() * 1000}
-                      className="img-fluid"
+                      className="img-fluid" style={{height:'8rem',borderRadius:'100%',width:'8rem'}}
                     />
                   </div>
                   <div>{item.title}</div>
@@ -57,6 +58,7 @@ function Cart() {
                 <div className="col-md-2">${item.price}</div>
                 <div className="col-md-2">{item.count}</div>
                 <div className="col-md-2">${item.price * item.count}</div>
+                <div className="col-md-2"><button style={{border:'none',backgroundColor:'transparent'}} onClick={()=>{dispatch(removeHandler(item.id))}}><CiCircleRemove style={{color:'red',fontSize:'3rem'}}/></button> </div>
                 <hr />
               </div>
             );
