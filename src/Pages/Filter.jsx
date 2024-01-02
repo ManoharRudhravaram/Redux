@@ -5,6 +5,7 @@ import {sortHandler, filterHandler } from
 
 function Filter() {
     let dispatch = useDispatch()
+    //updated array to display 
     let UpdatedList = useSelector((data) => {
         return data.sortReducer.sortedData;
     })
@@ -13,6 +14,7 @@ function Filter() {
         return data.fetchReducer.data;
     })
 
+    //category filter to make unique array
     let cat = MainArr.map((item) => {
         return item.category;
     })

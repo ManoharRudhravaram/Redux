@@ -6,6 +6,7 @@ import Pagination from './Pagination'
 
 function Dispaly() {
   
+    //main array of products to display 
     let array = useSelector((data) => {
         return data.sortReducer.sortedData;
     })

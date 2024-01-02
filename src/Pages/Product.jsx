@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 function Product({ item }) {
     let dispatch=useDispatch()
+    //destructuring from item
     let { thumbnail, title, price, id }= item;
     return (
         <>

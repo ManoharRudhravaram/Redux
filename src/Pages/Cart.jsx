@@ -12,11 +12,12 @@ function Cart() {
   })
 
   let Total = useSelector((data) => {
-    return data.cartReducer.total;
+    return data.cartReducer.totalPrice;
   })
 
   useEffect(() => {
     dispatch({ type: 'totalPrice' })
+    dispatch({ type: 'totalCount' })
     localStorage.setItem('cart',JSON.stringify(cart))
   }, [cart])
 
@@ -58,7 +59,7 @@ function Cart() {
                 <div className="col-md-2">${item.price}</div>
                 <div className="col-md-2">{item.count}</div>
                 <div className="col-md-2">${item.price * item.count}</div>
-                <div className="col-md-2"><button style={{border:'none',backgroundColor:'transparent'}} onClick={()=>{dispatch(removeHandler(item.id))}}><CiCircleRemove style={{color:'red',fontSize:'3rem'}}/></button> </div>
+                <div className="col-md-2"><button style={{border:'none',backgroundColor:'transparent'}} onClick={()=>{dispatch(removeHandler(item.id))}}><CiCircleRemove style={{color:'red',fontSize:'3rem'}}/></button></div>
                 <hr />
               </div>
             );

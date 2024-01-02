@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 function Gallary({ images }) {
     let [url, setUrl] = useState(images ? images[0] : null)
     
+    //to set image on click
     function imageHandler(data) {
         setUrl(data)
     }

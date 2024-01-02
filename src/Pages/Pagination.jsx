@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FetchHandler} from '../Redux/Action';
 
 function Pagination() {
-    
-    let [value, setValue] = useState({ first: 0 })
-
     let dispatch = useDispatch()
     
-    useEffect(() => {
-        FetchHandler(dispatch, value)
-    }, [value])
-
+    //object for setting skip value of api  
+    let [value, setValue] = useState({ first: 0 })
+    
+    //no of buttons to create according to array length
     let buttons = useSelector((data) => {
         return data.fetchReducer.data;
     })
@@ -20,6 +17,7 @@ function Pagination() {
         return data.sortReducer.sortedData;
     })
 
+    //next button 
     function incHandler() {
         let objValue = { ...value, first: value.first + 10 }
         if (value.first === 90) {
@@ -29,7 +27,8 @@ function Pagination() {
             setValue(objValue)
         }
     }
-
+    
+    //previous button
     function decHandler() {
         let objValue = { ...value, first: value.first - 10 }
         if (value.first === 0) {
@@ -39,12 +38,17 @@ function Pagination() {
             setValue(objValue)
         }
     }
-
+    
+    //value handler to update value
     function valueHandler(val) {
         let objValue = { ...value, first: val }
         setValue(objValue)
     }
     
+    useEffect(() => {
+        FetchHandler(dispatch, value)
+    }, [value])
+
     return (
         <div>
             {array.length > 0 &&
@@ -53,7 +57,7 @@ function Pagination() {
                         value.first > 0 && <button className='btn btn-primary' onClick={decHandler}>Previous</button>
                     }
                     {
-                        buttons.map((_, i) => {
+                        buttons.map((_,i) => {
                             return <button className='btn btn-primary' key={i} onClick={() => {
                                 valueHandler((i) * 10)
                             }}>{i + 1}</button>

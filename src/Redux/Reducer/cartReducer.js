@@ -1,6 +1,6 @@
 import { getData } from '../Action/index';
 
-const initial = { cartData: getData(), totalPrice: 0 }
+const initial = { cartData: getData(), totalPrice: '', totalCount: '' }
 function cartReducer(state = initial, action) {
   switch (action.type) {
     case 'totalPrice':
@@ -9,15 +9,21 @@ function cartReducer(state = initial, action) {
       }, 0)
       return { ...state, totalPrice: totalprice }
 
+    case 'totalCount':
+      let totalcount = state.cartData.reduce((acc, item) => {
+        return acc + item.count;
+      }, 0)
+      return { ...state, totalCount: totalcount };
+
     case 'addToCart':
       let { count, singleData: { thumbnail, price, title, id, stock } } = action.payload;
       let sameProd = state.cartData.find((item) => {
-        return item.id == id
+        return item.id === id
       })
 
       if (sameProd) {
         let uniqueArr = state.cartData.map((item) => {
-          if (item.id == sameProd.id) {
+          if (item.id === sameProd.id) {
             let finalCount = item.count + count
             let newData = item.stock > finalCount ? finalCount : item.stock
             return { ...item, count: newData }
@@ -35,11 +41,11 @@ function cartReducer(state = initial, action) {
         }
         return { ...state, cartData: [...state.cartData, obj] }
       }
-      case 'remove':
-        let updated=state.cartData.filter((item)=>{
-          return item.id!==action.payload;
-        })
-        return {...state,cartData:updated}
+    case 'remove':
+      let updated = state.cartData.filter((item) => {
+        return item.id !== action.payload;
+      })
+      return { ...state, cartData: updated }
     default:
       return state;
   }

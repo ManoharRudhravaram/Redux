@@ -7,12 +7,14 @@ import { FaStar } from "react-icons/fa";
 import CartIncDec from './CartIncDec';
 
 function Single() {
+  //getting id of single product 
   let { id } = useParams();
 
   let data = useSelector((data) => {
     return data.fetchReducer.single;
   })
 
+  //destruturing from single data
   let { images, title, description, rating, price, stock, brand, discountPercentage } = data;
 
   let dispatch = useDispatch();
