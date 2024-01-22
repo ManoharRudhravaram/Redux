@@ -16,21 +16,19 @@ function Gallary({ images }) {
                         {images ? images?.map((data, i) => {
                             return (
                                 <div className="m-3" key={i}>
-                                    <img src={data} key={i} alt={i} className="img-fluid" onClick={() => {
+                                    <img src={data} key={i} alt={i} className="img-fluid h-28" onClick={() => {
                                         imageHandler(data)
-                                    }} style={{height:'10rem'}} />
+                                    }} />
                                 </div>
                             )
                         }) : null}
                     </div>
-                    <div className="col-md-6">
-                        <div style={{ width: "100%", height: "100vh" }} className="d-flex justify-content-center align-items-center">
-                            <img
+                    <div className="col-md-6 flex  justify-evenly items-center">
+                    <img
                                 src={url}
                                 alt='x'
                                 className="img-fluid" 
                             />
-                        </div>
                     </div>
                 </div>
             }

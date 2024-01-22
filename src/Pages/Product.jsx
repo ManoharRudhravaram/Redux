@@ -7,13 +7,14 @@ function Product({ item }) {
     let dispatch=useDispatch()
     //destructuring from item
     let { thumbnail, title, price, id }= item;
+    
     return (
         <>
-            <div className="col-md-4" style={{ height: '20rem' }}>
+            <div className="col-md-4 h-72" >
                 <div className="card">
-                    <div className="card-body d-flex align-items-center justify-content-evenly bg-success">
+                    <div className="card-body  flex items-center justify-evenly  bg-green-600">
                         <Link to={`/single/${id}`}>
-                            <img src={thumbnail} alt={id} className='img-fluid' style={{ height: '10rem', borderRadius: '15px', width: '280px' }} onClick={()=>{singleFetch(id)}}/>
+                            <img src={thumbnail} alt={id} className='img-fluid h-40 w-72'  onClick={()=>{singleFetch(id)}}/>
                         </Link>
                     </div>
                     <div className="card-footer d-flex  justify-content-around bg-secondary text-white align-items-center">

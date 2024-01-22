@@ -10,12 +10,12 @@ function Single() {
   //getting id of single product 
   let { id } = useParams();
 
-  let data = useSelector((data) => {
-    return data.fetchReducer.single;
+  let {single} = useSelector((data) => {
+    return data.fetchReducer;
   })
 
   //destruturing from single data
-  let { images, title, description, rating, price, stock, brand, discountPercentage } = data;
+  let { images, title, description, rating, price, stock, brand, discountPercentage } = single;
 
   let dispatch = useDispatch();
   
@@ -26,19 +26,19 @@ function Single() {
   return (
     <>
       <div className="container">
-        <div className="row  d-flex justify-content-evenly">
+        <div className="row  d-flex justify-content-evenly items-center">
           <div className="col-md-5 mt-1">
             <Gallary images={images} />
           </div>
           <div className="col-md-5">
-            <h1 style={{ fontFamily: 'fantasy' }}>{title}</h1>
-            <p><FaStar />{rating}</p>
-            <p>MRP:${price}</p>
-            <p className="text-primary">deal of the day:${price - ((price * discountPercentage) / 100)}</p>
-            <p className="m-2" style={{ fontFamily: 'initial' }}>
+            <h1 className=' text-xl font-serif '>{title}</h1>
+            <p className='flex  items-center'><FaStar />{rating}</p>
+            <p className='text-xl'>MRP:${price}</p>
+            <p className="text-blue-900 text-2xl">deal of the day:${price - ((price * discountPercentage) / 100)}</p>
+            <p className="m-2 text-md" >
               {description}
             </p>
-            <div style={{ width: "100%" }}>
+            <div className=' w-full'>
               <img src="https://i.pinimg.com/736x/0d/cf/b5/0dcfb548989afdf22afff75e2a46a508.jpg" alt='x' className='img-fluid' style={{ height: '150px' }} />
             </div>
             <hr />

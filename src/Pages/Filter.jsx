@@ -21,20 +21,20 @@ function Filter() {
     let category = ['all', ...new Set(cat)]
 
     return (
-        <div style={{width:'100%',height:'100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',overflowY: 'auto'}}>
-            <h1>Sort</h1>
-            <select onChange={(e) => { dispatch(sortHandler(e, UpdatedList)) }} style={{borderRadius:'5px'}}>
+        <div  className='w-full h-screen flex flex-col justify-center items-center'>
+            <h1 className=' text-xl'>Sort</h1>
+            <select onChange={(e) => { dispatch(sortHandler(e, UpdatedList)) }} className=' rounded-sm'>
                 <option value="a-z">sort:A_Z</option>
                 <option value="z-a">sort:Z_A</option>
                 <option value="h-l">price:L_H</option>
                 <option value="l-h">price:H_L</option>
             </select>
             <br />
-            <h2>Filter</h2>
-            <div style={{display:'flex',justifyContent:'center',flexDirection:'column',gap:'5px'}}>
+            <h2 className=' text-xl'>Filter</h2>
+            <div className=' flex flex-col'>
                 {
                     category.map((e, i) => {
-                        return <button value={e} key={i}className='btn'  onClick={(e) => { dispatch(filterHandler(e, MainArr)) }}>{e}</button>
+                        return <button value={e} key={i}className=' bg-blue-600 rounded-md m-1 p-1 text-white'  onClick={(e) => { dispatch(filterHandler(e, MainArr)) }}>{e}</button>
                     })
                 }
             </div>

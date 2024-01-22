@@ -52,7 +52,7 @@ function Pagination() {
     return (
         <div>
             {array.length > 0 &&
-                <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: "center", padding: '5px', width: '30%', margin: 'auto', gap: '1px' }}>
+                <div className=' flex gap-1 justify-center m-1 '>
                     {
                         value.first > 0 && <button className='btn btn-primary' onClick={decHandler}>Previous</button>
                     }

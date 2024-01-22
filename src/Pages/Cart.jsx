@@ -20,21 +20,21 @@ function Cart() {
     dispatch({ type: 'totalCount' })
     localStorage.setItem('cart',JSON.stringify(cart))
   }, [cart])
-
   return (
     <>
       {cart.length == 0 && <div className="container">
-        <div className="row d-flex justify-content-center align-items-center" style={{ height: "50vh", width: "100%" }}>
-          <div className="col">
-            <h1>Your Cart is Empty</h1>
+        <div className="row flex items-center justify-evenly border h-screen" >
+          <div className="col flex flex-col items-center">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7359557-6024626.png" alt="connect to internet" />
+            <h1 className='text-xl'>Your Cart is Empty</h1>
             <Link to="/">
-              <button className="btn btn-primary">continue shopping</button>
+              <button className=" bg-blue-700 text-white p-2 rounded-md text-xl">continue shopping</button>
             </Link>
           </div>
         </div>
       </div>}
       {cart.length > 0 && (<div className="container">
-        <div className="row d-flex justify-content-evenly">
+        <div className="row flex items-center justify-evenly">
           <div className="col-md-2">ITEM</div>
           <div className="col-md-2">PRICE</div>
           <div className="col-md-2">QUANTITY</div>
@@ -45,7 +45,7 @@ function Cart() {
         {cart.length > 0 &&
           cart.map((item, i) => {
             return (
-              <div className="row d-flex justify-content-evenly border" key={i}>
+              <div className="row flex items-center justify-evenly border" key={i}>
                 <div className="col-md-2">
                   <div>
                     <img
@@ -68,7 +68,7 @@ function Cart() {
           <div className="row d-flex justify-content-between m-5">
             <div className="col-md-3">
               <Link to="/">
-                <button className="btn btn-primary">CONTINUE SHOPPING</button>
+                <button className="bg-blue-700 text-white p-2 rounded-md text-xl">CONTINUE SHOPPING</button>
               </Link>
             </div>
             <div className="col-md-3">Grand Total:

@@ -28,23 +28,23 @@ function CartIncDec() {
     }
 
     return (
-        <div style={{display:'flex',flexDirection:'column',alignItems:'start'}}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', width: '10rem', margin: '2rem' }}>
-                <button style={{
+        <div className=' flex flex-col items-center justify-evenly h-24'>
+            <div className="flex justify-evenly w-24 m-2 " >
+            <button style={{
                     border: 'none', backgroundColor: 'transparent'
                 }} onClick={incHandler}>
                     <FaPlus />
                 </button>
-                <h4>{count}</h4>
+                <h4 className=' text-2xl'>{count}</h4>
                 <button style={{
                     border: 'none', backgroundColor: 'transparent'
                 }} onClick={decHandler}>
                     <FaMinus />
                 </button>
             </div>
-            <div style={{marginLeft:'3rem'}}>
+            <div>
             <Link to='/cart'>
-                <button className='btn btn-success' onClick={()=>{dispatch(addToCart(singleData,count))}}>Add to Cart</button>
+                <button className=' bg-green-500 p-2 rounded-md text-white' onClick={()=>{dispatch(addToCart(singleData,count))}}>Add to Cart</button>
             </Link>
             </div>
         </div>

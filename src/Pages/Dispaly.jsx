@@ -24,7 +24,7 @@ function Dispaly() {
                         wrapperClass="color-ring-wrapper"
                         colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
                     /> :
-                        <div className="row" style={{width:'100%'}}>
+                        <div className="row w-full" >
                             {
                                 array.map((item, i) => {
                                     return <Product item={item} key={i} />
